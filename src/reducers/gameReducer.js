@@ -8,7 +8,7 @@ export const GameReducer = (state, action) => {
         gameStartTime: action.game.gameStartTime
       }
     case 'END_GAME':
-      return {
+      return { // TODO: Write separate functions, write variables
         ...state,
         gameEndTime: action.game.gameEndTime,
         score: action.game.gameEndTime - state.gameStartTime,

@@ -1,0 +1,15 @@
+.historyContainer {
+  border: 1px solid var(--light-red);
+  border-radius: 10%;
+  padding: 1rem;
+  text-align: center;
+}
+
+.heading {
+  font-size: 3rem;
+}
+
+.gamelist {
+  display: flex;
+  flex-direction: column;
+}

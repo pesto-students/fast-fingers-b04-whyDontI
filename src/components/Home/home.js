@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import { Link } from "@reach/router";
 import keyboardIcon from '../../assets/images/icon-awesome-keyboard.svg';
 import playIcon from '../../assets/images/icon-play.svg'
 import { GameContext } from '../../contexts/context';
@@ -9,7 +10,8 @@ const Home = () => {
   const { dispatch } = useContext(GameContext)
 
   const [playerName, setPlayerName] = useState('')
-  const [difficulty, setDifficulty] = useState('')
+  const [difficulty, setDifficulty] = useState('Easy')
+
   const handleStartGame = (e) => {
     e.preventDefault()
     dispatch({
@@ -34,15 +36,17 @@ const Home = () => {
         </div>
         <div className="inputContainer">
           <input type="text" placeholder="Name" value={playerName} className="inputBox" onChange={(e) => setPlayerName(e.target.value)} required />
-          <select placeholder="Difficulty" value={difficulty} onChange={(e) => setDifficulty(e.target.value)} className="inputBox" >
-            <option value="Easy">Easy</option>
+          <select placeholder="Difficulty" value={difficulty} className="inputBox" onChange={(e) => setDifficulty(e.target.value)} className="inputBox" >
+            <option value="Easy" selected>Easy</option>
             <option value="Medium">Medium</option>
             <option value="Hard">Hard</option>
           </select>
         </div>
         <div className="action" onClick={handleStartGame}>
           <img src={playIcon} alt="" />
-          <h1>Start Game</h1>
+          <Link to="arena">
+            <h1>Start Game</h1>
+          </Link>
         </div>
       </div>
     </div>

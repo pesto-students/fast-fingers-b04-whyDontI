@@ -1,3 +1,7 @@
+:root {
+  --light-red: #ff5155;
+}
+
 @font-face {
   font-family: 'laserCorps';
   src: local('laserCorps'), url('./assets/fonts/lasercorpsgrad.ttf') format('truetype');
@@ -15,8 +19,27 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: laserCorps;
+  color: var(--light-red);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+a {
+  text-decoration: none;
+  color: var(--light-red)
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
 }

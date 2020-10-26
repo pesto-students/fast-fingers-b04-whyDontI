@@ -6,6 +6,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
 .content {
@@ -37,7 +38,6 @@
 .horizontalLine {
   width: 4rem;
   height: 0;
-  border: solid 2px var(--light-red);;
   margin: 1rem;
 }
 

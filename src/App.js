@@ -1,13 +1,19 @@
 import React from 'react';
-import Home from './components/Home/home'
-import './App.css';
 import GameContextProvider from './contexts/context';
-
+import { Router } from "@reach/router";
+import Home from './components/Home/home'
+import Arena from './components/Arena/arena';
+import './App.css';
 function App() {
   return (
     <div className="App">
+      {/* TODO: https://reactjs.org/docs/error-boundaries.html */}
       <GameContextProvider>
-        <Home></Home>
+        <Router>
+          <Home path="/" />
+          <Arena path="/arena" />
+        </Router>
+        {/* <Arena /> */}
       </GameContextProvider>
     </div>
   );
