@@ -1,0 +1,74 @@
+:root {
+  --light-red: #ff5155; 
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  margin-top: 134px;
+  color: var(--light-red);
+}
+
+.gameTitle {
+  font-size: 4rem;
+}
+
+.gameDescription {
+  font-size: 2rem;
+}
+
+.keyboardIcon {
+  width: 234.2px;
+  height: 156.1px;
+  object-fit: contain;
+  opacity: 0.64;
+}
+
+.dialogueBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.horizontalLine {
+  width: 4rem;
+  height: 0;
+  border: solid 2px var(--light-red);;
+  margin: 1rem;
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.inputBox {
+  font-family: breamCatcher;
+  font-size: 1.5rem;
+  width: 60%;
+  padding: 0.5rem;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background: none;
+  color: white;
+}
+
+.inputContainer select option {
+  background: none;
+}
+
+.action {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}

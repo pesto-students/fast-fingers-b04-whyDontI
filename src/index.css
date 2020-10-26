@@ -1,3 +1,13 @@
+@font-face {
+  font-family: 'laserCorps';
+  src: local('laserCorps'), url('./assets/fonts/lasercorpsgrad.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'breamCatcher';
+  src: local('breamCatcher'), url('./assets/fonts/breamcatcher.ttf') format('truetype');
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -8,6 +18,5 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
