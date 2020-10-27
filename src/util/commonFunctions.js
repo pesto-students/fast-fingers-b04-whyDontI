@@ -1,6 +1,5 @@
 function getDifficultyFactor(difficulty) {
   let difficultyFactor = 0
-  console.log(difficulty)
 
   switch (difficulty) {
     case 'Easy':

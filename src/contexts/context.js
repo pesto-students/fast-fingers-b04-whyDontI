@@ -4,6 +4,7 @@ import { GameReducer } from '../reducers/gameReducer'
 export const GameContext = createContext();
 
 const GameContextProvider = (props) => {
+  const localStorageState = localStorage.getItem('gameState')
   const [gameState, dispatch] = useReducer(GameReducer, {
     playerName: '',
     previousGames: [],
@@ -12,7 +13,10 @@ const GameContextProvider = (props) => {
     gameEndTime: Date.now(),
     score: 0,
     difficulty: 'Easy',
-    difficultyFactor: 1
+    difficultyFactor: 1,
+    currentWord: '',
+    inputWord: '',
+    ...((localStorageState === null) ? {} : JSON.parse(localStorageState))
   });
 
   return (

@@ -28,12 +28,22 @@ function endGame(state, game) {
   return newState
 }
 
+function showNewWord(state, game) {
+  const newState = {
+    ...state,
+    currentWord: game.currentWord
+  }
+  return newState
+}
+
 export const GameReducer = (state, action) => {
   switch (action.type) {
     case 'START_GAME':
       return startGame(state, action.game)
     case 'END_GAME':
       return endGame(state, action.game)
+    case 'SHOW_NEW_WORD':
+      return showNewWord(state, action.game)
     default:
       return state
   }

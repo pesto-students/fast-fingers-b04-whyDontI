@@ -1,16 +1,25 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import './timer.css'
 
+import { GameContext } from '../../contexts/context'
+
 const Timer = (props) => {
+
+  const { gameState } = useContext(GameContext)
+
   let [timeToBeShown, setTimeToBeShown] = useState("--:--")
   let [strokeDashArray, setStrokeDashArray] = useState("283")
   let [timeLimit, setTimeLimit] = useState(2)
+  let {
+    currentWord,
+    difficultyFactor
+  } = gameState
 
   useEffect(() => {
-    const timeLimit = Math.ceil(props.wordLength / props.difficultyFactor);
+    const timeLimit = Math.ceil(currentWord.length / difficultyFactor);
     setTimeLimit((timeLimit > 2) ? timeLimit : 2)
     startTimer()
-  }, [props.wordLength, props.difficultyFactor])
+  }, [currentWord, difficultyFactor])
 
   const FULL_DASH_ARRAY = 283
   let timePassed = 0;
