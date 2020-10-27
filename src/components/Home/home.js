@@ -3,22 +3,25 @@ import { Link } from "@reach/router";
 import keyboardIcon from '../../assets/images/icon-awesome-keyboard.svg';
 import playIcon from '../../assets/images/icon-play.svg'
 import { GameContext } from '../../contexts/context';
+import { getDifficultyFactor } from '../../util/commonFunctions'
 import './home.css'
 
 const Home = () => {
-
   const { dispatch } = useContext(GameContext)
-
   const [playerName, setPlayerName] = useState('')
   const [difficulty, setDifficulty] = useState('Easy')
 
   const handleStartGame = (e) => {
     e.preventDefault()
+    if (playerName.trim() === '') {
+      console.log('Error please enter valid name')
+    }
     dispatch({
       type: 'START_GAME',
       game: {
         playerName,
         difficulty,
+        difficultyFactor: getDifficultyFactor(difficulty),
         gameStartTime: Date.now()
       }
     })
@@ -35,9 +38,9 @@ const Home = () => {
           <div className="horizontalLine"></div>
         </div>
         <div className="inputContainer">
-          <input type="text" placeholder="Name" value={playerName} className="inputBox" onChange={(e) => setPlayerName(e.target.value)} required />
-          <select placeholder="Difficulty" value={difficulty} className="inputBox" onChange={(e) => setDifficulty(e.target.value)} className="inputBox" >
-            <option value="Easy" selected>Easy</option>
+          <input type="text" placeholder="Type your name" value={playerName} className="inputBox" onChange={(e) => setPlayerName(e.target.value)} required />
+          <select placeholder="Difficulty level" onChange={(e) => setDifficulty(e.target.value)} className="inputBox" >
+            <option value="Easy">Easy</option>
             <option value="Medium">Medium</option>
             <option value="Hard">Hard</option>
           </select>

@@ -11,7 +11,8 @@ const GameContextProvider = (props) => {
     gameStartTime: Date.now(),
     gameEndTime: Date.now(),
     score: 0,
-    difficulty: 'Easy'
+    difficulty: 'Easy',
+    difficultyFactor: 1
   });
 
   return (

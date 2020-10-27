@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { GameContext } from '../../contexts/context';
 
 import userIcon from '../../assets/images/Icon-material-person.svg'

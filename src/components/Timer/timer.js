@@ -1,19 +1,20 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { GameContext } from '../../contexts/context';
+import React, { useEffect, useState } from 'react';
 import './timer.css'
 
-const Timer = () => {
+const Timer = (props) => {
   let [timeToBeShown, setTimeToBeShown] = useState("--:--")
   let [strokeDashArray, setStrokeDashArray] = useState("283")
+  let [timeLimit, setTimeLimit] = useState(2)
 
   useEffect(() => {
+    const timeLimit = Math.ceil(props.wordLength / props.difficultyFactor);
+    setTimeLimit((timeLimit > 2) ? timeLimit : 2)
     startTimer()
-  }, [])
+  }, [props.wordLength, props.difficultyFactor])
 
-  const TIME_LIMIT = 5;
   const FULL_DASH_ARRAY = 283
   let timePassed = 0;
-  let timeLeft = TIME_LIMIT;
+  let timeLeft = timeLimit;
   let timerInterval = null;
 
   function formatTimeLeft(time) {
@@ -31,7 +32,7 @@ const Timer = () => {
     timerInterval = setInterval(() => {
 
       timePassed = timePassed += 1;
-      timeLeft = TIME_LIMIT - timePassed;
+      timeLeft = timeLimit - timePassed;
 
       if (timeLeft <= 0) {
         clearInterval(timerInterval)
@@ -43,8 +44,8 @@ const Timer = () => {
   }
 
   function calculateTimeFraction() {
-    const rawTimeFraction = timeLeft / TIME_LIMIT;
-    return rawTimeFraction - (1 / TIME_LIMIT) * (1 - rawTimeFraction);
+    const rawTimeFraction = timeLeft / timeLimit;
+    return rawTimeFraction - (1 / timeLimit) * (1 - rawTimeFraction);
 
   }
 
