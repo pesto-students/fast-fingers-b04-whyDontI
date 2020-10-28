@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useState } from 'react';
+import React, { useEffect, useContext } from 'react';
 import data from '../../assets/data/dictionary.json'
 import Header from '../Header/header';
 import History from '../History/history'
@@ -11,16 +11,7 @@ import { GameContext } from '../../contexts/context'
 const Arena = () => {
   const { gameState, dispatch } = useContext(GameContext)
 
-  useEffect(() => {
-    getNewWord()
-  }, [])
-
-  const getRandomInt = (max) => {
-    return Math.floor(Math.random() * Math.floor(max));
-  }
-
   const getNewWord = () => {
-
     let words = []
     const difficultyLevel = gameState.difficulty
     if (difficultyLevel === 'Easy') {
@@ -39,16 +30,30 @@ const Arena = () => {
         currentWord: newWord
       }
     })
+  }
 
+  useEffect(() => {
+    const resetScore = () => {
+      dispatch({
+        type: 'RESET_SCORE'
+      })
+    }
+
+    getNewWord()
+    resetScore()
+  }, [])
+
+  const getRandomInt = (max) => {
+    return Math.floor(Math.random() * Math.floor(max));
   }
 
   return (
     <div className="arenaContainer">
       <div className="header">
-        <Header></Header>
+        <Header />
       </div>
       <div className="history">
-        <History></History>
+        <History />
       </div>
       <div className="arena">
         <Timer />

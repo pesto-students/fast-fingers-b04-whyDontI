@@ -3,7 +3,9 @@ import GameContextProvider from './contexts/context';
 import { Router } from "@reach/router";
 import Home from './components/Home/home'
 import Arena from './components/Arena/arena';
+import Final from './components/Final/final';
 import './App.css';
+
 function App() {
   return (
     <div className="App">
@@ -12,8 +14,8 @@ function App() {
         <Router>
           <Home path="/" />
           <Arena path="/arena" />
+          <Final path="/final" />
         </Router>
-        {/* <Arena /> */}
       </GameContextProvider>
     </div>
   );

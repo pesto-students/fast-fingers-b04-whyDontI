@@ -46,12 +46,13 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 50%;
 }
 
 .inputBox {
   font-family: breamCatcher;
   font-size: 1.5rem;
-  width: 60%;
+  width: 100%;
   padding: 0.5rem;
   margin: 5px 0;
   border: 1px solid #ccc;
@@ -59,10 +60,11 @@
   box-sizing: border-box;
   background: none;
   color: white;
+  text-align: center;
 }
 
-.inputContainer select option {
-  background: none;
+select > option {
+  background: black;
 }
 
 .action {
@@ -71,4 +73,5 @@
   justify-content: center;
   align-items: center;
   position: relative;
+  font-size: 2rem;
 }

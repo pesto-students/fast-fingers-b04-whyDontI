@@ -1,10 +1,11 @@
 import React, { useEffect, useState, useContext } from 'react';
+import { navigate } from "@reach/router"
 import './word.css'
 
 import { GameContext } from '../../contexts/context'
 
 const Word = (props) => {
-  const { gameState } = useContext(GameContext)
+  const { gameState, dispatch } = useContext(GameContext)
   const {
     currentWord
   } = gameState
@@ -16,7 +17,7 @@ const Word = (props) => {
   const [inputWord, setInputWord] = useState('')
 
   const doesWordsMatch = (inputWord, word) => {
-    if ((inputWord.length !== word.length)) {
+    if (inputWord.length !== word.length) {
       return false
     }
 
@@ -39,14 +40,25 @@ const Word = (props) => {
   }
 
   const handleWordInput = (newWord) => {
-    if (doesWordsMatch(newWord, currentWord)) {
+    if (newWord.length === currentWord.length && doesWordsMatch(newWord, currentWord)) {
       setInputWord(newWord)
       setInputWord('')
       props.getNewWord()
-      return
+      dispatch({
+        type: 'UPDATE_SCORE'
+      })
+    } else if (newWord[newWord.length - 1] !== currentWord[newWord.length - 1]) {
+      dispatch({
+        type: 'END_GAME',
+        game: {
+          gameEndTime: Date.now()
+        }
+      })
+      navigate('/final')
+    } else {
+      setInputWord(newWord)
+      handleWordStyle(newWord)
     }
-    setInputWord(newWord)
-    handleWordStyle(newWord)
   }
 
   return (

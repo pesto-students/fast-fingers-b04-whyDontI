@@ -12,15 +12,15 @@ const Home = () => {
   const [difficulty, setDifficulty] = useState('Easy')
 
   useEffect(() => {
+    const loadInitialData = () => {
+      if (gameState) {
+        setPlayerName(gameState.playerName)
+        setDifficulty(gameState.difficulty)
+      }
+    }
+
     loadInitialData()
   }, [])
-
-  const loadInitialData = () => {
-    if (gameState) {
-      setPlayerName(gameState.playerName)
-      setDifficulty(gameState.difficulty)
-    }
-  }
 
   const handleStartGame = (e) => {
     e.preventDefault()

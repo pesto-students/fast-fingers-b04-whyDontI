@@ -3,7 +3,7 @@ import './timer.css'
 
 import { GameContext } from '../../contexts/context'
 
-const Timer = (props) => {
+const Timer = () => {
 
   const { gameState } = useContext(GameContext)
 
