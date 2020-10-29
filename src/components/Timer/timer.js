@@ -19,7 +19,7 @@ const Timer = () => {
     const timeLimit = Math.ceil(currentWord.length / difficultyFactor);
     setTimeLimit((timeLimit > 2) ? timeLimit : 2)
     startTimer()
-  }, [currentWord, difficultyFactor])
+  }, [currentWord])
 
   const FULL_DASH_ARRAY = 283
   let timePassed = 0;
@@ -39,12 +39,17 @@ const Timer = () => {
 
   function startTimer() {
     timerInterval = setInterval(() => {
+      if (timeLeft <= 0) {
+        clearInterval(timerInterval);
+        setStrokeDashArray("283")
+      }
 
       timePassed = timePassed += 1;
       timeLeft = timeLimit - timePassed;
 
       if (timeLeft <= 0) {
-        clearInterval(timerInterval)
+        clearInterval(timerInterval);
+        setStrokeDashArray("283")
       }
 
       setTimeToBeShown(formatTimeLeft(timeLeft));

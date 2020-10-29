@@ -36,3 +36,14 @@
 .playAgain img {
   margin-right: 1rem;
 }
+
+@media only screen and (max-width: 600px) {
+  .playAgain {
+    width: 100%;
+    font-size: 0.6em;
+  }
+
+  .playAgain img {
+    width: 1em;
+  }
+}

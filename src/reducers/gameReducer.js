@@ -5,7 +5,8 @@ function startGame(state, game) {
     difficulty: game.difficulty,
     difficultyFactor: game.difficultyFactor,
     gameStartTime: game.gameStartTime,
-    score: 0
+    score: 0,
+    gameOver: false
   }
 
   localStorage.setItem('gameState', JSON.stringify(newState))
@@ -21,11 +22,11 @@ function endGame(state, game) {
       ...state.previousGames,
       {
         gameNumber: state.gameNumber,
-        score: Math.round((game.gameEndTime - state.gameStartTime) / 1000),
-
+        score: Math.round((game.gameEndTime - state.gameStartTime) / 1000)
       }
     ],
-    gameNumber: state.gameNumber + 1
+    gameNumber: state.gameNumber + 1,
+    gameOver: true
   }
 
   localStorage.setItem('gameState', JSON.stringify(newState))
