@@ -1,0 +1,11 @@
+.wordMatch {
+  color: green;
+}
+
+.wordMismatch {
+  color: red;
+}
+
+.wordToType {
+  font-size: 5rem;
+}

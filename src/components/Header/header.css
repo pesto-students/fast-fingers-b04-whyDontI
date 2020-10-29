@@ -1,0 +1,18 @@
+.headerContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.info {
+  width: 50%;
+  flex-basis: 50%;
+  height: 2em;
+}
+
+.info img {
+  margin-right: 1rem;
+}

@@ -1,0 +1,38 @@
+.finalContainer {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: wrap;
+  font-family: breamCatcher;
+  font-size: 1.7rem;
+  padding: 1rem;
+}
+
+.header {
+  width: 100%;
+}
+
+.content {
+  width: 100%;
+  flex-basis: 100%;
+  flex-direction: column;
+  display: flex;
+  justify-content: flex-starts;
+  align-items: center;
+  text-align: center;
+  font-size: 4rem;
+}
+
+.score {
+  font-size: 5rem;
+}
+
+.playAgain {
+  width: 50%;
+  flex-basis: 50%;
+  height: 2em;
+}
+
+.playAgain img {
+  margin-right: 1rem;
+}
