@@ -61,7 +61,7 @@ const Home = () => {
         <div className="action" onClick={handleStartGame}>
           <img src={playIcon} alt="" />
           <Link to="arena">
-            <h1>Start Game</h1>
+            <span className="headingStartGame">Start Game</span>
           </Link>
         </div>
       </div>
