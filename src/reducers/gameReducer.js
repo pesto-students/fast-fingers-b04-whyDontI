@@ -45,6 +45,7 @@ function showNewWord(state, game) {
   const newState = {
     ...state,
     currentWord: game.currentWord,
+    timeLimit: game.timeLimit,
     difficulty,
     difficultyFactor: newDifficultyFactor
   }

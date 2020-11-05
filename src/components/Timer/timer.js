@@ -1,30 +1,31 @@
-import React, { useEffect, useState, useContext } from 'react';
+import { navigate } from "@reach/router"
+import React, { useEffect, useState, useContext, useRef } from 'react';
 import './timer.css'
 
 import { GameContext } from '../../contexts/context'
 
-const Timer = () => {
-
-  const { gameState } = useContext(GameContext)
-
-  let [timeToBeShown, setTimeToBeShown] = useState("--:--")
-  let [strokeDashArray, setStrokeDashArray] = useState("283")
-  let [timeLimit, setTimeLimit] = useState(2)
+const Timer = (props) => {
+  const timerId = useRef()
+  const { dispatch } = useContext(GameContext)
   let {
     currentWord,
-    difficultyFactor
-  } = gameState
+    timeLimit
+  } = props
 
-  useEffect(() => {
-    const timeLimit = Math.ceil(currentWord.length / difficultyFactor);
-    setTimeLimit((timeLimit > 2) ? timeLimit : 2)
-    startTimer()
-  }, [currentWord])
-
+  let [timeToBeShown, setTimeToBeShown] = useState(formatTimeLeft(timeLimit))
+  let [strokeDashArray, setStrokeDashArray] = useState("283")
   const FULL_DASH_ARRAY = 283
   let timePassed = 0;
   let timeLeft = timeLimit;
-  let timerInterval = null;
+  let ms = 0
+
+  useEffect(() => {
+    startTimer()
+
+    return () => {
+      clearInterval(timerId.current);
+    }
+  }, [currentWord])
 
   function formatTimeLeft(time) {
     const minutes = Math.floor(time / 60);
@@ -38,29 +39,43 @@ const Timer = () => {
   }
 
   function startTimer() {
-    timerInterval = setInterval(() => {
+    timerId.current = setInterval(() => {
+      ms += 1;
+
       if (timeLeft <= 0) {
-        clearInterval(timerInterval);
-        setStrokeDashArray("283")
+        clearInterval(timerId.current);
+        gameOver()
       }
 
-      timePassed = timePassed += 1;
-      timeLeft = timeLimit - timePassed;
+      if (ms >= 10) {
+        timePassed = timePassed += 1;
+        timeLeft = timeLimit - timePassed;
+        ms = 0;
+      }
 
       if (timeLeft <= 0) {
-        clearInterval(timerInterval);
-        setStrokeDashArray("283")
+        clearInterval(timerId.current);
+        gameOver()
       }
 
       setTimeToBeShown(formatTimeLeft(timeLeft));
       setCircleDasharray();
-    }, 1000);
+    }, 100);
+  }
+
+  function gameOver() {
+    dispatch({
+      type: 'END_GAME',
+      game: {
+        gameEndTime: Date.now()
+      }
+    })
+    navigate('/final')
   }
 
   function calculateTimeFraction() {
     const rawTimeFraction = timeLeft / timeLimit;
     return rawTimeFraction - (1 / timeLimit) * (1 - rawTimeFraction);
-
   }
 
   function setCircleDasharray() {

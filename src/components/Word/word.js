@@ -47,14 +47,6 @@ const Word = (props) => {
       dispatch({
         type: 'UPDATE_SCORE'
       })
-    } else if (newWord[newWord.length - 1] !== currentWord[newWord.length - 1]) {
-      dispatch({
-        type: 'END_GAME',
-        game: {
-          gameEndTime: Date.now()
-        }
-      })
-      navigate('/final')
     } else {
       setInputWord(newWord)
       handleWordStyle(newWord)

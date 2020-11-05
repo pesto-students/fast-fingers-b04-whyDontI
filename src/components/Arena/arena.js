@@ -10,10 +10,16 @@ import { GameContext } from '../../contexts/context'
 
 const Arena = () => {
   const { gameState, dispatch } = useContext(GameContext)
+  const {
+    difficulty,
+    difficultyFactor,
+    timeLimit,
+    currentWord
+  } = gameState
 
   const getNewWord = () => {
     let words = []
-    const difficultyLevel = gameState.difficulty
+    const difficultyLevel = difficulty
     if (difficultyLevel === 'Easy') {
       words = data.filter((word) => word.length <= 4)
     } else if (difficultyLevel === 'Medium') {
@@ -27,7 +33,8 @@ const Arena = () => {
     dispatch({
       type: 'SHOW_NEW_WORD',
       game: {
-        currentWord: newWord
+        currentWord: newWord,
+        timeLimit: Math.ceil(newWord.length / difficultyFactor)
       }
     })
   }
@@ -38,7 +45,6 @@ const Arena = () => {
         type: 'RESET_SCORE'
       })
     }
-
     getNewWord()
     resetScore()
   }, [])
@@ -56,7 +62,7 @@ const Arena = () => {
         <History />
       </div>
       <div className="arena">
-        <Timer />
+        <Timer timeLimit={timeLimit} currentWord={currentWord} key={timeLimit + currentWord} />
         <Word getNewWord={getNewWord} />
       </div>
     </div>

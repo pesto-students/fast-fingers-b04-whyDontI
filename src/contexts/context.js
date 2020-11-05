@@ -15,6 +15,7 @@ const GameContextProvider = (props) => {
     difficulty: 'Easy',
     difficultyFactor: 1,
     currentWord: '',
+    timeLimit: 0,
     inputWord: '',
     gameOver: false,
     ...((localStorageState === null) ? {} : JSON.parse(localStorageState))
