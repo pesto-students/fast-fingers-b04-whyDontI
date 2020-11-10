@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
-import Header from '../Header/header'
+import Header from '../Header/header';
+import Footer from '../Footer/footer';
 import { Link } from "@reach/router";
 import { GameContext } from '../../contexts/context'
 import reloadIcon from '../../assets/images/icon-open-reload.svg'
@@ -7,6 +8,7 @@ import reloadIcon from '../../assets/images/icon-open-reload.svg'
 import './final.css'
 
 const Final = () => {
+  const { gameState, dispatch } = useContext(GameContext)
 
   const handleStartGame = (e) => {
     const localStorageState = localStorage.getItem('gameState')
@@ -22,7 +24,6 @@ const Final = () => {
     })
   }
 
-  const { gameState, dispatch } = useContext(GameContext)
   const currentGame = gameState.previousGames[gameState.previousGames.length - 1]
   return (
     <div className="finalContainer">
@@ -37,6 +38,9 @@ const Final = () => {
           <Link to="/arena">
             <span>Play Again</span>
           </Link>
+        </div>
+        <div className="finalFooter">
+          <Footer />
         </div>
       </div>
     </div>

@@ -74,8 +74,16 @@ select > option {
   align-items: center;
   position: relative;
   font-size: 2rem;
+  cursor: pointer;
+  user-select: none
 }
 
 .headingStartGame {
   font-size: 2rem;
+}
+
+.validationError {
+  color: red;
+  font-family: roboto;
+  font-size: 1rem;
 }

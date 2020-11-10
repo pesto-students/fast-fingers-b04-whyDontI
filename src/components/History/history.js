@@ -16,7 +16,7 @@ const History = () => {
         {gameState.previousGames.map((v, i) => {
           let personalBest = (v.score === maxScore) && <span className="tinyFont">Personal Best</span>;
           return (
-            <div className="gameScore">
+            <div className="gameScore" key={i}>
               {personalBest}
               <span key={i}>Game {v.gameNumber} - {v.score}</span>
             </div>

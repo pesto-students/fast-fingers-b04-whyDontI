@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { GameContext } from '../../contexts/context';
+import { navigate } from "@reach/router"
 
 import userIcon from '../../assets/images/Icon-material-person.svg'
 import gamepadIcon from '../../assets/images/Icon-awesome-gamepad.svg'
@@ -7,14 +8,23 @@ import './header.css'
 
 const Header = () => {
 
-  const { gameState } = useContext(GameContext)
+  const { gameState, dispatch } = useContext(GameContext)
+  function handleNavigateHome() {
+    dispatch({
+      type: 'END_GAME',
+      game: {
+        gameEndTime: Date.now()
+      }
+    })
+    navigate('/')
+  }
   return (
     <div className="headerContainer">
       <div className="info">
         <img src={userIcon} alt="" className="" />
         {gameState.playerName}
       </div>
-      <div className="info text-right">
+      <div className="info text-right" onClick={handleNavigateHome}>
         {"Fast Fingers"}
       </div>
       <div className="info">

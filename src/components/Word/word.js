@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { navigate } from "@reach/router"
 import './word.css'
 
 import { GameContext } from '../../contexts/context'
@@ -16,7 +15,9 @@ const Word = (props) => {
   const [wordHtml, setWordHtml] = useState('')
   const [inputWord, setInputWord] = useState('')
 
-  const doesWordsMatch = (inputWord, word) => {
+  const doesWordsMatch = (ipWord, originalWord) => {
+    const inputWord = ipWord.toUpperCase()
+    const word = originalWord.toUpperCase()
     if (inputWord.length !== word.length) {
       return false
     }
@@ -29,8 +30,9 @@ const Word = (props) => {
     return true
   }
 
-  const handleWordStyle = (newWord) => {
-    const word = currentWord.split('')
+  const handleWordStyle = (inputWord) => {
+    const word = currentWord.toUpperCase().split('')
+    const newWord = inputWord.toUpperCase()
 
     let wordHtml = word.map((c, i) => {
       return (<span key={i} className={(newWord[i] === word[i]) ? 'wordMatch' : 'wordMismatch'}>{word[i]}</span>)
@@ -56,7 +58,7 @@ const Word = (props) => {
   return (
     <>
       <span className="wordToType">{wordHtml}</span>
-      <input type="text" className="inputBox" value={inputWord} onChange={(e) => handleWordInput(e.target.value)} />
+      <input type="text" className="inputBox" value={inputWord} onChange={(e) => handleWordInput(e.target.value)} autoFocus />
     </>
   )
 };

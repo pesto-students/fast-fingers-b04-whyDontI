@@ -4,6 +4,7 @@ import Header from '../Header/header';
 import History from '../History/history'
 import Word from '../Word/word';
 import Timer from '../Timer/timer';
+import Footer from '../Footer/footer';
 import './arena.css'
 
 import { GameContext } from '../../contexts/context'
@@ -64,6 +65,9 @@ const Arena = () => {
       <div className="arena">
         <Timer timeLimit={timeLimit} currentWord={currentWord} key={timeLimit + currentWord} />
         <Word getNewWord={getNewWord} />
+      </div>
+      <div className="footer">
+        <Footer />
       </div>
     </div>
   )

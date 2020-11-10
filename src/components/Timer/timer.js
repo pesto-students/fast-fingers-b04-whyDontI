@@ -1,8 +1,7 @@
-import { navigate } from "@reach/router"
 import React, { useEffect, useState, useContext, useRef } from 'react';
-import './timer.css'
-
 import { GameContext } from '../../contexts/context'
+import { navigate } from "@reach/router"
+import './timer.css'
 
 const Timer = (props) => {
   const timerId = useRef()

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link } from "@reach/router";
+import { navigate } from "@reach/router";
 import keyboardIcon from '../../assets/images/icon-awesome-keyboard.svg';
 import playIcon from '../../assets/images/icon-play.svg'
 import { GameContext } from '../../contexts/context';
@@ -25,8 +25,7 @@ const Home = () => {
   const handleStartGame = (e) => {
     e.preventDefault()
     if (playerName.trim() === '') {
-      // TODO: Error for valid name
-      console.log('Error please enter valid name')
+      return
     }
 
     dispatch({
@@ -38,6 +37,7 @@ const Home = () => {
         gameStartTime: Date.now()
       }
     })
+    navigate(`/arena`)
   }
 
   return (
@@ -52,6 +52,7 @@ const Home = () => {
         </div>
         <div className="inputContainer">
           <input type="text" placeholder="Type your name" value={playerName} className="inputBox" onChange={(e) => setPlayerName(e.target.value)} required />
+          {!playerName.length && <span className="validationError">Name field is required</span>}
           <select placeholder="Difficulty level" value={difficulty} onChange={(e) => setDifficulty(e.target.value)} className="inputBox" >
             <option value="Easy">Easy</option>
             <option value="Medium">Medium</option>
@@ -60,9 +61,7 @@ const Home = () => {
         </div>
         <div className="action" onClick={handleStartGame}>
           <img src={playIcon} alt="" />
-          <Link to="arena">
-            <span className="headingStartGame">Start Game</span>
-          </Link>
+          <span className="headingStartGame">Start Game</span>
         </div>
       </div>
     </div>

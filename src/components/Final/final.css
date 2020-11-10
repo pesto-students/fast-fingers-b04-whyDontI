@@ -14,9 +14,9 @@
 
 .content {
   width: 100%;
+  display: flex;
   flex-basis: 100%;
   flex-direction: column;
-  display: flex;
   justify-content: flex-starts;
   align-items: center;
   text-align: center;
@@ -31,6 +31,10 @@
   width: 50%;
   flex-basis: 50%;
   height: 2em;
+}
+
+.finalFooter {
+  cursor: pointer;
 }
 
 .playAgain img {

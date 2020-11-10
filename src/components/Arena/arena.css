@@ -24,6 +24,12 @@
   align-items: center;
 }
 
+.footer {
+  position: absolute;
+  bottom: 0px;
+  cursor: pointer;
+}
+
 .inputBox {
   font-family: breamCatcher;
   font-size: 1.5rem;
@@ -39,7 +45,15 @@
 }
 
 @media only screen and (max-width: 600px) {
+  .arenaContainer {
+    justify-content: center;
+  }
   .history {
-    display: none;
+    order: 3;
+  }
+
+  .footer {
+    position: relative;
+    order: 4;
   }
 }
