@@ -1,22 +1,21 @@
 import React, { useContext } from 'react';
+import { navigate } from '@reach/router';
 import { GameContext } from '../../contexts/context';
-import { navigate } from "@reach/router"
 
-import userIcon from '../../assets/images/Icon-material-person.svg'
-import gamepadIcon from '../../assets/images/Icon-awesome-gamepad.svg'
-import './header.css'
+import userIcon from '../../assets/images/Icon-material-person.svg';
+import gamepadIcon from '../../assets/images/Icon-awesome-gamepad.svg';
+import './header.css';
 
 const Header = () => {
-
-  const { gameState, dispatch } = useContext(GameContext)
+  const { gameState, dispatch } = useContext(GameContext);
   function handleNavigateHome() {
     dispatch({
       type: 'END_GAME',
       game: {
-        gameEndTime: Date.now()
-      }
-    })
-    navigate('/')
+        gameEndTime: Date.now(),
+      },
+    });
+    navigate('/');
   }
   return (
     <div className="headerContainer">
@@ -24,8 +23,8 @@ const Header = () => {
         <img src={userIcon} alt="" className="" />
         {gameState.playerName}
       </div>
-      <div className="info text-right" onClick={handleNavigateHome}>
-        {"Fast Fingers"}
+      <div className="info text-right" role="button" tabIndex={0} onKeyDown={handleNavigateHome} onClick={handleNavigateHome}>
+        Fast Fingers
       </div>
       <div className="info">
         <img src={gamepadIcon} alt="" className="" />
@@ -36,7 +35,7 @@ const Header = () => {
       </div>
       <img src="" alt="" className="" />
     </div>
-  )
-}
+  );
+};
 
 export default Header;
