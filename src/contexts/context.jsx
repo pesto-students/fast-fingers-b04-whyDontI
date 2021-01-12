@@ -1,10 +1,10 @@
 import React, { createContext, useReducer } from 'react';
-import { GameReducer } from '../reducers/gameReducer'
+import PropTypes from 'prop-types';
+import { GameReducer } from '../reducers/gameReducer';
 
 export const GameContext = createContext();
 
-const GameContextProvider = (props) => {
-  const localStorageState = localStorage.getItem('gameState')
+const GameContextProvider = ({ children }) => {
   const [gameState, dispatch] = useReducer(GameReducer, {
     playerName: '',
     previousGames: [],
@@ -15,15 +15,20 @@ const GameContextProvider = (props) => {
     difficulty: 'Easy',
     difficultyFactor: 1,
     currentWord: '',
+    timeLimit: 0,
     inputWord: '',
-    ...((localStorageState === null) ? {} : JSON.parse(localStorageState))
+    gameOver: false,
   });
 
   return (
     <GameContext.Provider value={{ gameState, dispatch }}>
-      {props.children}
+      {children}
     </GameContext.Provider>
   );
-}
+};
+
+GameContextProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 export default GameContextProvider;

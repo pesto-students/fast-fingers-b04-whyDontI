@@ -3,7 +3,6 @@
   justify-content: space-between;
   flex-direction: row;
   flex-wrap: wrap;
-  font-family: breamCatcher;
   font-size: 1.7rem;
   padding: 1rem;
 }
@@ -14,9 +13,9 @@
 
 .content {
   width: 100%;
+  display: flex;
   flex-basis: 100%;
   flex-direction: column;
-  display: flex;
   justify-content: flex-starts;
   align-items: center;
   text-align: center;
@@ -33,6 +32,21 @@
   height: 2em;
 }
 
+.finalFooter {
+  cursor: pointer;
+}
+
 .playAgain img {
   margin-right: 1rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .playAgain {
+    width: 100%;
+    font-size: 0.6em;
+  }
+
+  .playAgain img {
+    width: 1em;
+  }
 }
