@@ -1,0 +1,21 @@
+.headerContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.headerSection {
+}
+
+.info {
+  height: 2em;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+
+.info img {
+  margin-right: 1rem;
+}

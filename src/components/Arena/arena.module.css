@@ -1,0 +1,44 @@
+.arenaContainer {
+	display: flex;
+	justify-content: space-between;
+	flex-direction: row;
+	flex-wrap: wrap;
+	font-size: 1.7rem;
+	padding: 1rem;
+}
+
+.header {
+	width: 100%;
+}
+
+.history {
+	align-self: flex-start;
+}
+
+.arena {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 3;
+	justify-content: center;
+	align-items: center;
+}
+
+.footer {
+	position: absolute;
+	bottom: 0px;
+	cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+	.arenaContainer {
+		justify-content: center;
+	}
+	.history {
+		order: 3;
+	}
+
+	.footer {
+		position: relative;
+		order: 4;
+	}
+}

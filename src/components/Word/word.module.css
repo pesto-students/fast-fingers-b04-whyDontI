@@ -1,0 +1,17 @@
+.wordMatch {
+  color: lightgreen;
+}
+
+.wordMismatch {
+  color: red;
+}
+
+.wordToType {
+  font-size: 5rem;
+}
+
+.inputBox {
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 3rem
+}

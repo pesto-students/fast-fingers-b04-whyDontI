@@ -1,0 +1,52 @@
+.finalContainer {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: wrap;
+  font-size: 1.7rem;
+  padding: 1rem;
+}
+
+.header {
+  width: 100%;
+}
+
+.content {
+  width: 100%;
+  display: flex;
+  flex-basis: 100%;
+  flex-direction: column;
+  justify-content: flex-starts;
+  align-items: center;
+  text-align: center;
+  font-size: 4rem;
+}
+
+.score {
+  font-size: 5rem;
+}
+
+.playAgain {
+  width: 50%;
+  flex-basis: 50%;
+  height: 2em;
+}
+
+.finalFooter {
+  cursor: pointer;
+}
+
+.playAgain img {
+  margin-right: 1rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .playAgain {
+    width: 100%;
+    font-size: 0.6em;
+  }
+
+  .playAgain img {
+    width: 1em;
+  }
+}
