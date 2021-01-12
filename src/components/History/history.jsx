@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { GameContext } from '../../contexts/context';
 
-import './history.css';
+import styles from './history.module.css';
 
 const History = () => {
   const { gameState } = useContext(GameContext);
@@ -11,26 +11,29 @@ const History = () => {
   );
 
   return (
-    <div className="historyContainer">
-      <div className="heading">Score Board</div>
-      <div className="gamelist">
-        {gameState.previousGames.map((v) => {
-          const personalBest = (v.score === maxScore) && <span className="tinyFont">Personal Best</span>;
-          return (
-            <div className="gameScore">
-              {personalBest}
-              <span key={v.gameNumber}>
-                Game
-                {' '}
-                {v.gameNumber}
-                {' '}
-                :
-                {' '}
-                {v.score}
-              </span>
-            </div>
-          );
-        })}
+    <div className={styles.historyContainer}>
+      <div className={styles.heading}>Score Board</div>
+      <div className={styles.gamelist}>
+        {
+          gameState.previousGames.map((v) => {
+            const personalBest = (v.score === maxScore)
+              && <span className={styles.tinyFont}>Personal Best</span>;
+            return (
+              <div key={v.gameNumber} className={styles.gameScore}>
+                { personalBest}
+                <span>
+                  Game
+                  {' '}
+                  {v.gameNumber}
+                  {' '}
+                  :
+                  {' '}
+                  {v.score}
+                </span>
+              </div>
+            );
+          })
+        }
       </div>
     </div>
   );

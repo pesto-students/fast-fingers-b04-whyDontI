@@ -4,7 +4,7 @@ import React, {
 import { navigate } from '@reach/router';
 import PropTypes from 'prop-types';
 import { GameContext } from '../../contexts/context';
-import './timer.css';
+import styles from './timer.module.css';
 
 function formatTimeLeft(time) {
   const minutes = Math.floor(time / 60);
@@ -86,15 +86,15 @@ const Timer = ({
   }, [currentWord]);
 
   return (
-    <div className="timerContainer">
-      <div className="base-timer">
-        <svg className="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-          <g className="base-timer__circle">
-            <circle className="base-timer__path-elapsed" cx="50" cy="50" r="45" />
+    <div className={styles.timerContainer}>
+      <div className={styles.baseTimer}>
+        <svg className={styles.baseTimerSvg} viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <g className={styles.baseTimerCircle}>
+            <circle className={styles.baseTimerPathElapsed} cx="50" cy="50" r="45" />
             <path
-              id="base-timer-path-remaining"
+              id="baseTimerPathRemaining"
               strokeDasharray={strokeDashArray}
-              className="base-timer__path-remaining"
+              className={styles.baseTimerPathRemaining}
               d="
                   M 50, 50
                   m -45, 0
@@ -104,7 +104,7 @@ const Timer = ({
             />
           </g>
         </svg>
-        <span id="base-timer-label" className="base-timer__label">
+        <span id="baseTimerLabel" className={styles.baseTimerLabel}>
           {timeToBeShown}
         </span>
       </div>

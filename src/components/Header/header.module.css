@@ -1,4 +1,4 @@
-.footerContainer {
+.headerContainer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -7,14 +7,13 @@
   width: 100%;
 }
 
-.footerInfo {
-  width: 100%;
+.headerSection {
+}
+
+.info {
   height: 2em;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  font-size: 3rem;
-  font-family: breamCatcher;
+  cursor: pointer;
+  margin-bottom: 1rem;
 }
 
 .info img {

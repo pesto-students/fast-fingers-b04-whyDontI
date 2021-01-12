@@ -5,8 +5,8 @@ import React, {
   useRef,
 } from 'react';
 import PropTypes from 'prop-types';
-import { uuid } from 'uuidv4';
-import './word.css';
+import { v4 as uuid } from 'uuid';
+import styles from './word.module.css';
 
 import { GameContext } from '../../contexts/context';
 
@@ -39,7 +39,14 @@ const Word = ({ getNewWord }) => {
     const upperCasedNewWord = newWord.toUpperCase();
 
     setWordHtml(
-      upperCasedCurrentWord.map((c, i) => (<span key={uuid()} className={(c === upperCasedNewWord[i]) ? 'wordMatch' : 'wordMismatch'}>{upperCasedCurrentWord[i]}</span>)),
+      upperCasedCurrentWord.map((c, i) => (
+        <span
+          key={uuid()}
+          className={(c === upperCasedNewWord[i]) ? styles.wordMatch : styles.wordMismatch}
+        >
+          {upperCasedCurrentWord[i]}
+        </span>
+      )),
     );
   };
 
@@ -64,8 +71,8 @@ const Word = ({ getNewWord }) => {
 
   return (
     <>
-      <span className="wordToType">{wordHtml}</span>
-      <input ref={inputRef} type="text" className="inputBox" value={inputWord} onChange={(e) => handleWordInput(e.target.value)} />
+      <span className={styles.wordToType}>{wordHtml}</span>
+      <input ref={inputRef} type="text" className={styles.inputBox} value={inputWord} onChange={(e) => handleWordInput(e.target.value)} />
     </>
   );
 };

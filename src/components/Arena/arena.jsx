@@ -5,7 +5,7 @@ import History from '../History/history';
 import Word from '../Word/word';
 import Timer from '../Timer/timer';
 import Footer from '../Footer/footer';
-import './arena.css';
+import styles from './arena.module.css';
 
 import { GameContext } from '../../contexts/context';
 
@@ -53,18 +53,18 @@ const Arena = () => {
   }, []);
 
   return (
-    <div className="arenaContainer">
-      <div className="header">
+    <div className={styles.arenaContainer}>
+      <div className={styles.header}>
         <Header />
       </div>
-      <div className="history">
+      <div className={styles.history}>
         <History />
       </div>
-      <div className="arena">
+      <div className={styles.arena}>
         <Timer timeLimit={timeLimit} currentWord={currentWord} key={timeLimit + currentWord} />
         <Word getNewWord={getNewWord} />
       </div>
-      <div className="footer">
+      <div className={styles.footer}>
         <Footer />
       </div>
     </div>

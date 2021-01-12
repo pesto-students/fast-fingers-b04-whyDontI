@@ -4,7 +4,7 @@ import { GameContext } from '../../contexts/context';
 
 import userIcon from '../../assets/images/Icon-material-person.svg';
 import gamepadIcon from '../../assets/images/Icon-awesome-gamepad.svg';
-import './header.css';
+import styles from './header.module.css';
 
 const Header = () => {
   const { gameState, dispatch } = useContext(GameContext);
@@ -18,22 +18,25 @@ const Header = () => {
     navigate('/');
   }
   return (
-    <div className="headerContainer">
-      <div className="info">
-        <img src={userIcon} alt="" className="" />
-        {gameState.playerName}
+    <div className={styles.headerContainer}>
+      <div className={styles.headerSection}>
+        <div className={styles.info}>
+          <img src={userIcon} alt="User Icon " />
+          {gameState.playerName}
+        </div>
+        <div className={styles.info}>
+          <img src={gamepadIcon} alt="Gamepad Icon" />
+          {`${gameState.difficulty}`}
+        </div>
       </div>
-      <div className="info text-right" role="button" tabIndex={0} onKeyDown={handleNavigateHome} onClick={handleNavigateHome}>
-        Fast Fingers
+      <div className={styles.headerSection}>
+        <div className={`${styles.info} ${styles.textRight}`} role="button" tabIndex={0} onKeyDown={handleNavigateHome} onClick={handleNavigateHome}>
+          Fast Fingers
+        </div>
+        <div className={`${styles.info} ${styles.textRight}`}>
+          {`Score: ${gameState.score}`}
+        </div>
       </div>
-      <div className="info">
-        <img src={gamepadIcon} alt="" className="" />
-        {`Level: ${gameState.difficulty}`}
-      </div>
-      <div className="info text-right">
-        {`Score: ${gameState.score}`}
-      </div>
-      <img src="" alt="" className="" />
     </div>
   );
 };
